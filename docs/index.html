@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neon Protocol - Daily</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#FFD6E0",
+              "tertiary-container": "#80002B",
+              "error-container": "#80002B",
+              "on-secondary-container": "#E0FFFF",
+              "on-secondary": "#090A0F",
+              "surface-container-lowest": "#050507",
+              "tertiary": "#FF0055",
+              "on-secondary-fixed": "#002024",
+              "on-primary-fixed-variant": "#4A0072",
+              "background": "#090A0F",
+              "secondary-container": "#004E57",
+              "surface-container-low": "#090A0F",
+              "on-surface-variant": "#6C7293",
+              "surface-variant": "#161824",
+              "surface-tint": "#B026FF",
+              "secondary-fixed": "#E0FFFF",
+              "on-error-container": "#FFD6E0",
+              "secondary-fixed-dim": "#00E5FF",
+              "tertiary-fixed-dim": "#FF0055",
+              "outline": "#6C7293",
+              "primary-fixed": "#F3E5FF",
+              "primary": "#B026FF",
+              "outline-variant": "#1C1E2D",
+              "on-primary-container": "#F8F9FA",
+              "inverse-on-surface": "#090A0F",
+              "secondary": "#00E5FF",
+              "surface-container": "#161824",
+              "inverse-primary": "#E0B0FF",
+              "inverse-surface": "#F8F9FA",
+              "surface-bright": "#161824",
+              "on-tertiary": "#FFFFFF",
+              "on-error": "#FFFFFF",
+              "surface-dim": "#090A0F",
+              "on-secondary-fixed-variant": "#004E57",
+              "on-tertiary-fixed": "#3A0013",
+              "on-primary": "#FFFFFF",
+              "primary-fixed-dim": "#E0B0FF",
+              "surface-container-highest": "#25283A",
+              "on-tertiary-fixed-variant": "#80002B",
+              "primary-container": "#4A0072",
+              "on-primary-fixed": "#24003A",
+              "on-background": "#F8F9FA",
+              "surface": "#090A0F",
+              "surface-container-high": "#1C1E2D",
+              "on-surface": "#F8F9FA",
+              "on-tertiary-container": "#FFD6E0",
+              "error": "#FF0055"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glow-primary { box-shadow: 0 0 15px rgba(176, 38, 255, 0.4); }
+      .glow-secondary { box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
+      .text-glow-primary { text-shadow: 0 0 10px rgba(176, 38, 255, 0.8); }
+      
+      @keyframes neon-flash {
+        0%, 100% { background-color: #090A0F; }
+        50% { background-color: #B026FF; }
+      }
+      .protocol-complete {
+        animation: neon-flash 0.5s ease-in-out 6;
+      }
+      
+      #progress-ring {
+        transition: stroke-dashoffset 0.5s linear;
+      }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30 min-h-screen pb-32 overflow-x-hidden" id="app-body">
+<header class="bg-[#090A0F] dark:bg-[#090A0F] border-b border-white/10 shadow-[0_0_15px_rgba(176,38,255,0.2)] fixed top-0 left-0 w-full z-50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#B026FF]">grid_view</span>
+</div>
+<h1 class="text-[#B026FF] dark:text-[#B026FF] font-['Space_Grotesk'] tracking-widest text-xl font-bold uppercase">NEON PROTOCOL</h1>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnRFtfVAnW3m3WTuwiBt8hV5PbN2JltQ0_yeUj9zKvf7_SURnopK9oMw1zKnB0hbWPLel5IG_AstdgDDrw_Hvq30P4p2Umt3yzSiauiOa7qFzQZ_wm9Q689zL4lL5jKMpJgeXlh_hxdIdCM8g2Sllk17EA5YDDTqmpT5suepSTOgqcvcOAZ_FTSl4B7P3beIf4pjI1pMMqbuaoYZs4CCNR9Ck16egsFQsxLS-e_rsjJmTSdTEAMzj4zUTDi1OvMWmbfvLKu8oLPQ"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-lg mx-auto relative z-10">
+
+<!-- Daily Page -->
+<div id="page-daily">
+<div class="text-center mb-8">
+<span class="font-label text-primary tracking-[0.3em] text-[10px] uppercase font-bold">Active Protocol</span>
+<h2 class="font-headline text-3xl font-bold mt-1">DAILY RESET</h2>
+</div>
+<div class="relative flex flex-col justify-center items-center py-10">
+<div class="relative w-72 h-72 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full border-2 border-primary/10 animate-[spin_10s_linear_infinite]"></div>
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container" cx="144" cy="144" fill="transparent" r="130" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(176,38,255,0.8)]" cx="144" cy="144" fill="transparent" id="progress-ring" r="130" stroke="currentColor" stroke-dasharray="816.8" stroke-dashoffset="0" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="font-headline text-6xl font-light tracking-tighter text-glow-primary" id="timer-display">12:00</span>
+<span class="font-label text-[10px] text-secondary tracking-widest mt-2 uppercase">Remaining</span>
+</div>
+</div>
+<button class="mt-8 flex items-center gap-2 bg-primary/10 hover:bg-primary/20 border border-primary/30 px-6 py-2 rounded-full transition-all active:scale-95 group" id="timer-control">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform" id="control-icon">play_arrow</span>
+<span class="font-label text-xs font-bold tracking-widest uppercase text-on-surface" id="control-text">Initialize</span>
+</button>
+</div>
+<section class="mt-8 space-y-4">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-headline text-sm font-bold tracking-widest uppercase text-on-surface-variant">Objectives</h3>
+<span class="text-[10px] font-label text-secondary">+05:00 PER SYNC</span>
+</div>
+<div class="objective-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleObjective(this)">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Clothes in hamper</span>
+<span class="text-xs text-on-surface-variant font-medium">Laundry Management</span>
+</div>
+<div class="check-btn w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center bg-background group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-primary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+<div class="objective-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleObjective(this)">
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-primary transition-colors">Clear surfaces</span>
+<span class="text-xs text-on-surface-variant font-medium">Space Optimization</span>
+</div>
+<div class="check-btn w-12 h-12 rounded-full border border-primary/30 flex items-center justify-center bg-background group-hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-primary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+</section>
+</div><!-- end page-daily -->
+
+<!-- Weekly Page -->
+<div id="page-weekly" class="hidden">
+<div class="text-center mb-8">
+<span class="font-label text-secondary tracking-[0.3em] text-[10px] uppercase font-bold">Weekly Protocol</span>
+<h2 class="font-headline text-3xl font-bold mt-1">DEEP CLEAN</h2>
+</div>
+
+<div class="flex items-center justify-between px-2 mb-4">
+<h3 class="font-headline text-sm font-bold tracking-widest uppercase text-on-surface-variant">Week Missions</h3>
+<span class="text-[10px] font-label text-secondary" id="weekly-progress">0 / 7 SYNCED</span>
+</div>
+
+<div class="space-y-3" id="weekly-objectives">
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">local_laundry_service</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Wash & fold laundry</span>
+<span class="text-xs text-on-surface-variant font-medium">Fabric Cycle</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">vacuum</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Vacuum all floors</span>
+<span class="text-xs text-on-surface-variant font-medium">Ground Control</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">mop</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Mop kitchen & bath</span>
+<span class="text-xs text-on-surface-variant font-medium">Surface Protocol</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">countertops</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Wipe down counters</span>
+<span class="text-xs text-on-surface-variant font-medium">Decontamination</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">delete</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Take out trash & recycling</span>
+<span class="text-xs text-on-surface-variant font-medium">Waste Purge</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">bathroom</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Scrub bathroom</span>
+<span class="text-xs text-on-surface-variant font-medium">Sanitation Bay</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+
+<div class="weekly-card bg-surface-container border border-white/5 rounded-xl p-5 flex items-center justify-between group hover:bg-surface-container-high transition-all duration-300 cursor-pointer" onclick="toggleWeekly(this)">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary/40 text-2xl">shelves</span>
+<div class="flex flex-col">
+<span class="font-headline text-lg font-medium text-on-surface group-hover:text-secondary transition-colors">Dust shelves & surfaces</span>
+<span class="text-xs text-on-surface-variant font-medium">Particle Sweep</span>
+</div>
+</div>
+<div class="weekly-check w-10 h-10 rounded-full border border-secondary/30 flex items-center justify-center bg-background group-hover:bg-secondary/10 transition-all">
+<span class="material-symbols-outlined text-secondary/20 pointer-events-none transition-all">check_circle</span>
+</div>
+</div>
+</div>
+
+<!-- Weekly progress bar -->
+<div class="mt-8 bg-surface-container/40 rounded-xl border border-white/5 p-5">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label text-[10px] text-on-surface-variant tracking-widest uppercase">Protocol Completion</span>
+<span class="font-headline text-sm font-bold text-secondary" id="weekly-percent">0%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-primary rounded-full transition-all duration-500" id="weekly-bar" style="width: 0%"></div>
+</div>
+</div>
+</div><!-- end page-weekly -->
+
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-[#161824]/90 backdrop-blur-md rounded-t-[2rem] border-t border-white/5 shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<div class="bg-gradient-to-t from-[#B026FF]/5 to-transparent flex justify-around items-center px-4 py-3 pb-8">
+<a class="nav-item flex flex-col items-center justify-center text-[#B026FF] bg-[#B026FF]/10 rounded-full px-6 py-2 shadow-[0_0_15px_rgba(176,38,255,0.3)] transition-all active:animate-pulse" href="#" onclick="switchNav(this, 'Daily')">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-tighter mt-1">Daily</span>
+</a>
+<a class="nav-item flex flex-col items-center justify-center text-slate-400 opacity-60 hover:opacity-100 hover:text-[#00E5FF] transition-all" href="#" onclick="switchNav(this, 'Weekly')">
+<span class="material-symbols-outlined">calendar_view_week</span>
+<span class="font-['Space_Grotesk'] text-[10px] uppercase tracking-tighter mt-1">Weekly</span>
+</a>
+</div>
+</nav>
+<div class="fixed top-1/4 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+<div class="fixed bottom-1/4 -left-20 w-64 h-64 bg-secondary/10 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+<script>
+    let timeLeft = 12 * 60; // 12 minutes in seconds
+    const totalTime = 12 * 60;
+    let timerId = null;
+    let isRunning = false;
+    const circumference = 2 * Math.PI * 130;
+
+    const timerDisplay = document.getElementById('timer-display');
+    const progressRing = document.getElementById('progress-ring');
+    const controlBtn = document.getElementById('timer-control');
+    const controlIcon = document.getElementById('control-icon');
+    const controlText = document.getElementById('control-text');
+    const appBody = document.getElementById('app-body');
+
+    function updateDisplay() {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        // Update Ring
+        const progress = Math.max(0, Math.min(1, timeLeft / totalTime));
+        const offset = circumference - progress * circumference;
+        progressRing.style.strokeDashoffset = offset;
+    }
+
+    function tick() {
+        if (timeLeft <= 0) {
+            clearInterval(timerId);
+            isRunning = false;
+            completeProtocol();
+        } else {
+            timeLeft--;
+            updateDisplay();
+        }
+    }
+
+    function toggleTimer() {
+        if (isRunning) {
+            clearInterval(timerId);
+            controlIcon.textContent = 'play_arrow';
+            controlText.textContent = 'Resume';
+            isRunning = false;
+        } else {
+            timerId = setInterval(tick, 1000);
+            controlIcon.textContent = 'pause';
+            controlText.textContent = 'Processing';
+            isRunning = true;
+        }
+    }
+
+    function addTime(seconds) {
+        timeLeft += seconds;
+        totalTime += seconds;
+        updateDisplay();
+        // Feedback animation
+        timerDisplay.classList.add('scale-110', 'text-secondary');
+        setTimeout(() => {
+            timerDisplay.classList.remove('scale-110', 'text-secondary');
+        }, 300);
+    }
+
+    function toggleObjective(card) {
+        const btn = card.querySelector('.check-btn');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        
+        if (card.dataset.completed === 'true') {
+            // Uncheck (optional but keeps UI fluid)
+            card.dataset.completed = 'false';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            icon.classList.replace('text-primary', 'text-primary/20');
+            btn.classList.remove('bg-primary/20');
+        } else {
+            // Check
+            card.dataset.completed = 'true';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            icon.classList.replace('text-primary/20', 'text-primary');
+            btn.classList.add('bg-primary/20');
+            addTime(300); // Add 5 minutes
+        }
+    }
+
+    function completeProtocol() {
+        appBody.classList.add('protocol-complete');
+        
+        // Visual alarm
+        timerDisplay.textContent = "00:00";
+        timerDisplay.classList.add('text-error', 'animate-pulse');
+        
+        // Play sound (High energy synth tone simulated via Web Audio API)
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.5);
+            
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 2);
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 2);
+        } catch(e) { console.log('Audio blocked'); }
+
+        setTimeout(() => {
+            appBody.classList.remove('protocol-complete');
+        }, 3000);
+    }
+
+    function switchNav(element, page) {
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('text-[#B026FF]', 'bg-[#B026FF]/10', 'rounded-full', 'px-6', 'py-2', 'shadow-[0_0_15px_rgba(176,38,255,0.3)]');
+            item.classList.add('text-slate-400', 'opacity-60');
+            const icon = item.querySelector('.material-symbols-outlined');
+            if (icon) icon.style.fontVariationSettings = "'FILL' 0";
+        });
+
+        element.classList.remove('text-slate-400', 'opacity-60');
+        element.classList.add('text-[#B026FF]', 'bg-[#B026FF]/10', 'rounded-full', 'px-6', 'py-2', 'shadow-[0_0_15px_rgba(176,38,255,0.3)]');
+        const icon = element.querySelector('.material-symbols-outlined');
+        if (icon) icon.style.fontVariationSettings = "'FILL' 1";
+
+        // Switch pages
+        document.getElementById('page-daily').classList.add('hidden');
+        document.getElementById('page-weekly').classList.add('hidden');
+        document.getElementById('page-' + page.toLowerCase()).classList.remove('hidden');
+    }
+
+    // Weekly objectives
+    function toggleWeekly(card) {
+        const btn = card.querySelector('.weekly-check');
+        const icon = btn.querySelector('.material-symbols-outlined');
+        const taskIcon = card.querySelector('.flex.items-center.gap-4 > .material-symbols-outlined');
+
+        if (card.dataset.completed === 'true') {
+            card.dataset.completed = 'false';
+            icon.style.fontVariationSettings = "'FILL' 0";
+            icon.classList.replace('text-secondary', 'text-secondary/20');
+            btn.classList.remove('bg-secondary/20');
+            if (taskIcon) taskIcon.classList.replace('text-secondary', 'text-secondary/40');
+        } else {
+            card.dataset.completed = 'true';
+            icon.style.fontVariationSettings = "'FILL' 1";
+            icon.classList.replace('text-secondary/20', 'text-secondary');
+            btn.classList.add('bg-secondary/20');
+            if (taskIcon) taskIcon.classList.replace('text-secondary/40', 'text-secondary');
+        }
+        updateWeeklyProgress();
+    }
+
+    function updateWeeklyProgress() {
+        const cards = document.querySelectorAll('.weekly-card');
+        const done = document.querySelectorAll('.weekly-card[data-completed="true"]').length;
+        const total = cards.length;
+        const pct = Math.round((done / total) * 100);
+
+        document.getElementById('weekly-progress').textContent = `${done} / ${total} SYNCED`;
+        document.getElementById('weekly-percent').textContent = `${pct}%`;
+        document.getElementById('weekly-bar').style.width = `${pct}%`;
+    }
+
+    controlBtn.addEventListener('click', toggleTimer);
+
+    // Initial State
+    progressRing.style.strokeDasharray = circumference;
+    updateDisplay();
+</script>
+</body></html>
